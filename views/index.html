@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>angularhw</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap_theme.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/site.css">
+</head>
+<body>
+	
+	<div ng-controller="MyController as vm">
+		<div>
+			<h1>Crud app</h1>
+			<input type="text" ng-model="vm.person">
+			<p>{{vm.person}}<p>
+			<button ng-click="vm.create()">Click to display in a box</button>
+		</div>
+		<div ng-show='vm.editing'>
+			<h1>Crud app</h1>
+			<input type="text" ng-model="vm.editPerson.persons">
+			<p>{{vm.editPerson}}<p>
+			<button ng-click="vm.finishEdit()">Click to Edit</button>
+		</div>
+		<div>
+			<div class="well container" ng-repeat="people in vm.people track by $index">
+				<p>{{people}}</p>
+				<button ng-click="vm.deletes($index)" class="btn btn-danger">Delete</button>
+				<button ng-click="vm.startEdit($index)" class="btn btn-warning">edit</button>
+			</div>
+	</div>
+	</div>
+	
+
+	<script src="/angular/angular.js"></script>
+	<script src="/javascript/app.js"></script>
+</body>
+</html>
